@@ -8,6 +8,13 @@
         
         <canvas id="marksChart" width="600" height="400" ></canvas>
         
+        <div class="col-md-12 text-left">
+            Based on your skills we recommend your to take the following courses:
+            <ul>
+                <li ng-repeat="c in recCourses"> {{ c.courseName }}</li>
+            </ul>
+            <i>Improve your skills by <a href="https://www.khanacademy.org/">Khan Academy</a></i>
+        </div>
     </div>
 </div>
 

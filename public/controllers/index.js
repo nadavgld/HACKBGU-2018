@@ -1,5 +1,6 @@
 // var app = angular.module('worldCupApp');
 var username = "nadavgri";
+var allCourses;
 
 app.controller('MainController',['$scope','$http','$location','$routeParams','$httpParamSerializerJQLike',function($scope,$http,$location,$routeParams,$httpParamSerializerJQLike){
     $scope.formSelection = {};
@@ -28,7 +29,8 @@ app.controller('MainController',['$scope','$http','$location','$routeParams','$h
     }
 
     $scope.updateCourses = function(){
-        var sem = $scope.formSelection.semester == "Graduated" ? 9 : $scope.formSelection.semester;
+        var _sem = $scope.formSelection.semester == "Graduated" ? 9 : $scope.formSelection.semester;
+        var sem = 9;
         var dept = $scope.formSelection.dept;
 
         $http.get('/departments/' + dept).then(function(data){
@@ -37,7 +39,12 @@ app.controller('MainController',['$scope','$http','$location','$routeParams','$h
             var deptNum = data.data;
 
             $http.get('/courses/' + deptNum + '/' + sem).then(function(data){
-                $scope.courses = data.data;
+                allCourses = data.data;
+
+                $scope.courses = allCourses.filter(function(course){
+                    return (parseInt(course.semester) < _sem);
+                });
+
                 $scope.showCourses = true;
 
                 if(data.data.length == 0){
@@ -174,7 +181,7 @@ app.controller('MainController',['$scope','$http','$location','$routeParams','$h
 
     $scope.skillsCalculate = function(){
         var user = $scope.user;
-        var courses = $scope.courses;
+        var courses = allCourses;
 
         var theoryPts = 0;
         var applyPts = 0;

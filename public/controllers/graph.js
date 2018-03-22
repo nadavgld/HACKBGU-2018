@@ -6,7 +6,18 @@ app.controller('graphController',['$scope','$http','$location','$routeParams','$
     $scope.apply = apply;
     $scope.prog = prog;
 
+    $scope.courses = allCourses;
+
+    $scope.coursesLoaded = $scope.courses != undefined ? true : false;
+
     $scope.loadCharts = function(){
+
+        if(!$scope.coursesLoaded){
+            alert("Must load courses!");
+            $location.path('/');
+            return;
+        }
+
         var marksCanvas = document.getElementById("marksChart");
     
         Chart.defaults.global.defaultFontFamily = "sans-serif"; //define font
@@ -25,7 +36,7 @@ app.controller('graphController',['$scope','$http','$location','$routeParams','$
             pointBackgroundColor: "blue",
             pointBorderColor: "rgba(54, 162, 235,0.2)",
             pointHoverRadius: 10,
-            data: [prog, theory, apply, math] //pull data
+            data: [$scope.prog, $scope.theory, $scope.apply, $scope.math] //pull data
             }]
         };
         
@@ -52,6 +63,26 @@ app.controller('graphController',['$scope','$http','$location','$routeParams','$
             data: marksData,
             options: chartOptions
         });
-        $("#marksChart").css("display","initial");        
+        $("#marksChart").css("display","initial");
+        
+        $scope.recCourses = $scope.getRecCourses();
+
+    }
+
+    $scope.getRecCourses = function(){
+        var n1;
+        var n2;
+        var n3;
+
+        n1 = Math.floor(Math.random() * 7);
+        n2 = Math.floor(Math.random() * 7);
+        while(n2 == n1)
+            n2 = Math.floor(Math.random() * 7);
+
+        n3 = Math.floor(Math.random() * 7);
+        while(n3 == n2 || n3 == n1)
+            n3 = Math.floor(Math.random() * 7);
+
+        return [allCourses[n1], allCourses[n2], allCourses[n3]];
     }
 }]);

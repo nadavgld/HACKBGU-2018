@@ -66,6 +66,9 @@
     background: white;
 }
 
+.navLogo{
+    width: 24px;
+}
 /* Loading */
 .spinner {
     margin: 100px auto 0;
