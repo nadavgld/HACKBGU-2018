@@ -1,0 +1,80 @@
+<html ng-app="worldCupApp">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Grade Analytica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+</head>
+<body>
+        <header>
+                <div class="collapse bg-dark" id="navbarHeader">
+                  <div class="container">
+                    <div class="row">
+                      <!-- <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+                      </div> -->
+                      <div class="col-sm-4 offset-md-1 py-5">
+                        <h4 class="text-white">Menu</h4>
+                        <ul class="list-unstyled">
+                          <li class="">
+                              <a href="#!/profile" id="menuProfile" class="menuList" data-toggle="collapse" data-target="#navbarHeader" data-target=".nav-collapse.in" aria-expanded="false" aria-label="Toggle navigation">Profile</a>
+                          </li>
+                          <li class="">
+                              <a href="#!/" id="menuLogout" class="menuList" data-toggle="collapse" data-target="#navbarHeader" data-target=".nav-collapse.in" aria-expanded="false" aria-label="Toggle navigation">Logout</a>
+                          </li>
+                          <li class="">
+                              <a href="#!/login" id="menuLogin" class="menuList" data-toggle="collapse" data-target="#navbarHeader" data-target=".nav-collapse.in" aria-expanded="false" aria-label="Toggle navigation">Login</a>
+                          </li>
+                          <li>
+                              <a href="#!/register" id="menuRegister" class="menuList" data-toggle="collapse" data-target="#navbarHeader" data-target=".nav-collapse.in" aria-expanded="false" aria-label="Toggle navigation">Register</a>                          
+                          </li>
+                          <li class="">
+                            <a href="#!/scores" id="menuScore" class="menuList" data-toggle="collapse" data-target="#navbarHeader" data-target=".nav-collapse.in" aria-expanded="false" aria-label="Toggle navigation">Scores</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="navbar navbar-collapse collapse navbar-dark bg-dark box-shadow">
+                  <div class="container d-flex justify-content-between">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <a href="#" class="navbar-brand d-flex align-items-center" data-toggle="collapse" data-target="#navbarHeader" data-target=".nav-collapse.in" aria-expanded="false" aria-label="Toggle navigation">
+                      <strong id="logoText">Grade Analytica</strong>
+                    </a>
+                  </div>
+                </div>
+              </header>
+          
+              <main role="main">
+          
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div ng-view id="ngContainer"></div>
+                        </div>
+                    </div>
+                </div>
+          
+              </main>
+
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/app.js"></script>
+    <script src="/controllers/index.js"></script>
+    <script src="/controllers/login.js"></script>
+    <script src="/controllers/scores.js"></script>
+    <script src="/controllers/register.js"></script>
+    <script src="/controllers/404.js"></script>
+</body>
+</html>
