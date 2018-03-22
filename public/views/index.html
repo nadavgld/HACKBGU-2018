@@ -1,9 +1,67 @@
-<div class="row">
+<div id="loading" class="mt-5">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+
+<div class="row" ng-init="fetchUserData()">
         <div class="col-md-12 text-center mt-5">
             <h1>
-                Welcome to GradeAnalytica!
+               {{ user.username }}, Welcome to {{welcome}}!
             </h1>
-            <p>
-            </p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 text-left">
+                        Select Department
+                    </div>
+                    <div class="col-md-6 text-left">
+                        <select ng-options="dept as dept for dept in formDepartments track by dept" ng-model="formSelection.dept" ng-change="updateSemesters()"></select>
+                    </div>
+                </div>
+                <div class="row mt-3" ng-if="showSemesters">
+                    <div class="col-md-3 text-left">
+                        Select current Semester
+                    </div>
+                    <div class="col-md-6 text-left">
+                        <select ng-options="semester as semester for semester in formSemesters track by semester" ng-model="formSelection.semester" ng-change="updateCourses()"></select>
+                    </div>
+                </div>
+                <div class="row mt-3 mb-3" ng-if="showCourses">
+                    <div class="col-md-12 d-flex">
+                        <div class="col-md-8 text-left">
+                               <h5> {{ coursesMsg }} </h5>
+                        </div>
+                        <div class="col-md-4 text-left">
+                            <button class="btn btn-dark" ng-click="saveGrade()">Save</button>
+                        </div>
+                    </div>
+                    <div class="col-md-12" ng-repeat="course in courses">
+                        <div class="col-md-12 text-left flexCourse">
+                            <div class="text-left lefterCourseName">
+                                {{ course.courseName }}
+                            </div>
+
+                            <div class="text-right mr-2">
+                                <input class="form-control courseGradeInput" type="number" min="56" max="100" ng-model="course.grade" placeholder="Enter Your Grade">
+                            </div>
+
+                            <div class="removeCourse" ng-click="removeACourse(course.courseNum);">
+                                X
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-3 d-flex">
+                        <div class="col-md-8 text-left">
+                            Add more courses
+                            <button class="btn btn-primary disabled">+</button>
+                        </div>
+                        <div class="col-md-4 text-left">
+                            <button class="btn btn-dark" ng-click="saveGrade()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
