@@ -47,13 +47,12 @@ app.controller('MainController',['$scope','$http','$location','$routeParams','$h
 
                 $scope.showCourses = true;
 
-                if(data.data.length == 0){
+                if($scope.courses.length == 0){
                     $scope.coursesMsg = "Couldn't find any course..";
                 }else{
                     $scope.coursesMsg = "Update your grades to the following courses:";
                     
                     $scope.updateCourseGrades();
-                    console.log($scope.courses);
                 }
 
                 hideLoading(0);
